@@ -42,9 +42,12 @@ while True:
 		rightEyeHull = cv2.convexHull(rightEye)
 		cv2.drawContours(frame, [leftEyeHull], -1, (0, 255, 0), 1)
 		cv2.drawContours(frame, [rightEyeHull], -1, (0, 255, 0), 1)
+		cv2.putText(frame, "EAR: {:.2f}".format(ear), (300, 30),
+			cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+		print(f"EAR: {ear:.4f}")
 		if ear < thresh:
 			flag += 1
-			print (flag)
+			# print (flag) # This is now redundant as we print the EAR
 			if flag >= frame_check:
 				cv2.putText(frame, "****************ALERT!****************", (10, 30),
 					cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
